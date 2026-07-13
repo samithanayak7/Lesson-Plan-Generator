@@ -1,0 +1,498 @@
+{
+    "Problem Solving Fundamentals": {
+        "Subtopics": [
+            {
+                "name": "Introduction to Programming",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Salient Features of C",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Program Structure",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Variables",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Data Types & range of values",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Qualifiers",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Operators and Expressions",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Control Structures",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Input/Output Functions",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Language Specifications Behaviors",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Single character input and output",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Coding standards and guidelines",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            }
+        ]
+    },
+    "Counting, Sorting and Searching": {
+        "Subtopics": [
+            {
+                "name": "Arrays1D and 2D",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Pointers",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Pointer to an array",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Array of pointers",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Functions",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Call back",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Storage classes",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Recursion",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Searching",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Sorting",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            }
+        ]
+    },
+    "Text Processing and UserDefined Types": {
+        "Subtopics": [
+            {
+                "name": "Strings",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "String Manipulation Functions & Error handling",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Command line arguments",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Dynamic Memory Management functions & Error handling",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Structures",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "#pragma",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Array of Structures",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Pointer to structures",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Passing Structure and Array of structure to a function",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Bit fields",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Unions",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Enums",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Lists",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Statck",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Queue",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Priority Queue.",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            }
+        ]
+    },
+    "File Handling and Portable Programming": {
+        "Subtopics": [
+            {
+                "name": "File IO using redirection",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "File Handling functions of C",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Searching",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Sorting",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Header files",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Comparison of relevant User defined and Builtin functions",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Variable Length Arguments",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Environment variables",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Preprocessor Directives",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            },
+            {
+                "name": "Conditional Compilation.",
+                "difficulty": null,
+                "lecture_hours": null,
+                "learning_objective": null,
+                "prerequisites": [],
+                "keywords": [],
+                "teaching_method": null,
+                "assessment_type": null
+            }
+        ]
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "Problem Solving Fundamentals": {
+        "Subtopics": [
+            "Introduction to Programming",
+            "Salient Features of C",
+            "Program Structure",
+            "Variables",
+            "Data Types & range of values",
+            "Qualifiers",
+            "Operators and Expressions",
+            "Control Structures",
+            "Input/Output Functions",
+            "Language Specifications Behaviors",
+            "Single character input and output",
+            "Coding standards and guidelines"
+        ]
+    },
+    "Counting, Sorting and Searching": {
+        "Subtopics": [
+            "Arrays1D and 2D",
+            "Pointers",
+            "Pointer to an array",
+            "Array of pointers",
+            "Functions",
+            "Call back",
+            "Storage classes",
+            "Recursion",
+            "Searching",
+            "Sorting"
+        ]
+    },
+    "Text Processing and UserDefined Types": {
+        "Subtopics": [
+            "Strings",
+            "String Manipulation Functions & Error handling",
+            "Command line arguments",
+            "Dynamic Memory Management functions & Error handling",
+            "Structures",
+            "#pragma",
+            "Array of Structures",
+            "Pointer to structures",
+            "Passing Structure and Array of structure to a function",
+            "Bit fields",
+            "Unions",
+            "Enums",
+            "Lists",
+            "Statck",
+            "Queue",
+            "Priority Queue."
+        ]
+    },
+    "File Handling and Portable Programming": {
+        "Subtopics": [
+            "File IO using redirection",
+            "File Handling functions of C",
+            "Searching",
+            "Sorting",
+            "Header files",
+            "Comparison of relevant User defined and Builtin functions",
+            "Variable Length Arguments",
+            "Environment variables",
+            "Preprocessor Directives",
+            "Conditional Compilation."
+        ]
+    }
+}
