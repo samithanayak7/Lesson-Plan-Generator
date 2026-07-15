@@ -4,7 +4,7 @@ from google import genai
 from google.genai import types
 
 # Initialize the Gemini Client
-client = genai.Client()
+client = genai.Client(api_key="AIzaSyAbjh5_QJw_k2Jwr1BLFgeDj2whf2p9548")
 
 # ---------------------------------------------------------
 # Default per-unit hour targets (used as fallback/prefill values;
