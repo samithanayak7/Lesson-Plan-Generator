@@ -101,10 +101,18 @@ def timeline_partition(items, key_func, num_classes, min_overlap=0.05):
     return classes
 
 
-def build_course_plan(input_path, output_path, sheet_name="course_plan"):
-    with open(input_path, "r") as f:
-        data = json.load(f)
-
+def schedule_from_data(data, sheet_name="course_plan"):
+    """
+    Core entry point: takes the syllabus dict already in memory
+    (same shape as completed_syllabus.json --
+     {unit_name: {"Subtopics": [{"name", "lecture_hours", ...}, ...]}, ...})
+    and returns (output, report):
+      - output: the course-plan dict, ready to json.dump or st.json
+      - report: a list of per-unit stats (total_hours, num_classes) useful
+        for a sanity-check / summary table in a UI
+    No file I/O happens here, so this is safe to call directly from a
+    Streamlit app on data that only exists in session_state.
+    """
     output = {"sheet_name": sheet_name}
     report = []
 
@@ -133,6 +141,16 @@ def build_course_plan(input_path, output_path, sheet_name="course_plan"):
             "total_hours": round(total_hours, 2),
             "num_classes": len(groups),
         })
+
+    return output, report
+
+
+def build_course_plan(input_path, output_path, sheet_name="course_plan"):
+    """File-based wrapper around schedule_from_data (used by the CLI)."""
+    with open(input_path, "r") as f:
+        data = json.load(f)
+
+    output, report = schedule_from_data(data, sheet_name=sheet_name)
 
     with open(output_path, "w") as f:
         json.dump(output, f, indent=2)
