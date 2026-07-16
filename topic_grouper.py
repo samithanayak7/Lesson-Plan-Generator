@@ -1,7 +1,49 @@
 import json
+import re
+import time
 from google.genai import types
 
 from json_filler import client, DEFAULT_UNIT_HOURS
+
+
+# ---------------------------------------------------------
+# Retry/backoff helper for rate limits (429 RESOURCE_EXHAUSTED).
+# Free-tier Gemini quotas are per-minute, so a single retry after
+# the server-suggested delay is usually enough to recover.
+# ---------------------------------------------------------
+def _extract_retry_delay(error_message: str, default: float = 20.0) -> float:
+    match = re.search(r"retryDelay['\"]?\s*:\s*['\"]?(\d+(?:\.\d+)?)s", error_message)
+    if match:
+        return float(match.group(1))
+    return default
+
+
+def _call_gemini_json(prompt: str, max_retries: int = 3) -> dict:
+    last_error = None
+    for attempt in range(max_retries):
+        try:
+            response = client.models.generate_content(
+                model='gemini-3.5-flash',
+                contents=[prompt],
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0.2,
+                ),
+            )
+            return json.loads(response.text)
+        except Exception as e:
+            last_error = e
+            message = str(e)
+            if "RESOURCE_EXHAUSTED" in message or "429" in message:
+                delay = _extract_retry_delay(message)
+                print(
+                    f"Rate limited (attempt {attempt + 1}/{max_retries}); "
+                    f"waiting {delay:.0f}s before retrying..."
+                )
+                time.sleep(delay + 1)
+                continue
+            raise
+    raise last_error
 
 
 # ---------------------------------------------------------
@@ -9,23 +51,30 @@ from json_filler import client, DEFAULT_UNIT_HOURS
 # Gemini is good at judging semantic/thematic similarity but
 # unreliable at precise arithmetic, so we never ask it to sum
 # or round hours itself -- that happens in Python (Stage B).
+#
+# NOTE: this makes ONE Gemini call for the ENTIRE syllabus (all
+# units at once) rather than one call per unit, to stay well
+# within free-tier per-minute rate limits.
 # ---------------------------------------------------------
-def get_grouping_plan(unit_name: str, subtopics: list) -> dict:
-    topic_summary = [
-        {"name": t["name"], "lecture_hours": t.get("lecture_hours")}
-        for t in subtopics
-    ]
+def get_grouping_plan_for_all_units(syllabus_data: dict) -> dict:
+    units_summary = {
+        unit_name: [
+            {"name": t["name"], "lecture_hours": t.get("lecture_hours")}
+            for t in unit_data.get("Subtopics", [])
+        ]
+        for unit_name, unit_data in syllabus_data.items()
+    }
 
     prompt = f"""
-    You are an expert academic curriculum engineer planning lecture sessions.
+    You are an expert academic curriculum engineer planning lecture sessions
+    across multiple units of a course.
 
-    UNIT: "{unit_name}"
+    Below is a JSON object mapping each unit name to its list of subtopics,
+    each with an estimated lecture hours value (decimal). For EACH unit,
+    decide which subtopics should be MERGED into a single combined lecture
+    session, and which should remain standalone.
 
-    Below is a list of subtopics with their estimated lecture hours (decimal).
-    Your job is to decide which subtopics should be MERGED into a single
-    combined lecture session, and which should remain standalone.
-
-    RULES:
+    RULES (apply per unit, independently):
     1. Only merge subtopics that are thematically/conceptually related
        (e.g. small related C type-declaration topics like bit fields, unions,
        and enums; or related I/O redirection topics). Never merge unrelated
@@ -36,31 +85,30 @@ def get_grouping_plan(unit_name: str, subtopics: list) -> dict:
     3. Major standalone concepts (e.g. Pointers, Recursion, Control
        Structures, Functions) should usually remain single, even if their
        hours are decimal -- they will be rounded individually, not merged.
-    4. Every subtopic name below must appear in exactly ONE place in your
-       output: either inside one group, or in "singles". No duplicates, none
+    4. Within each unit, every subtopic name must appear in exactly ONE
+       place: either inside one group, or in "singles". No duplicates, none
        omitted.
     5. Do NOT calculate or output any hour totals yourself -- only decide
        the grouping.
 
-    Subtopics:
-    {json.dumps(topic_summary, indent=2)}
+    Units and their subtopics:
+    {json.dumps(units_summary, indent=2)}
 
-    Output ONLY valid JSON (no markdown, no commentary) in this exact shape:
+    Output ONLY valid JSON (no markdown, no commentary) in this exact shape,
+    with one entry per unit name given above:
     {{
-      "groups": [["Topic A", "Topic B"], ["Topic C", "Topic D", "Topic E"]],
-      "singles": ["Topic F", "Topic G"]
+      "Unit Name 1": {{
+        "groups": [["Topic A", "Topic B"], ["Topic C", "Topic D", "Topic E"]],
+        "singles": ["Topic F", "Topic G"]
+      }},
+      "Unit Name 2": {{
+        "groups": [...],
+        "singles": [...]
+      }}
     }}
     """
 
-    response = client.models.generate_content(
-        model='gemini-3.5-flash',
-        contents=[prompt],
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            temperature=0.2,
-        ),
-    )
-    return json.loads(response.text)
+    return _call_gemini_json(prompt)
 
 
 # ---------------------------------------------------------
@@ -150,6 +198,9 @@ def group_similar_topics(syllabus_data: dict, unit_targets: dict = None) -> dict
     unit_targets = unit_targets or {}
     grouped_output = {}
 
+    print("Planning groupings for all units in a single request...")
+    all_plans = get_grouping_plan_for_all_units(syllabus_data)
+
     for unit_name, unit_data in syllabus_data.items():
         subtopics = unit_data.get("Subtopics", [])
         if not subtopics:
@@ -162,8 +213,12 @@ def group_similar_topics(syllabus_data: dict, unit_targets: dict = None) -> dict
             or DEFAULT_UNIT_HOURS.get(unit_name)
         )
 
-        print(f"Planning groupings for '{unit_name}'...")
-        plan = get_grouping_plan(unit_name, subtopics)
+        # Fallback: if Gemini's response is missing this unit for any reason,
+        # treat every topic as standalone rather than failing the whole run.
+        plan = all_plans.get(unit_name, {
+            "groups": [],
+            "singles": [t["name"] for t in subtopics],
+        })
 
         name_to_topic = {t["name"]: t for t in subtopics}
         used_names = set()
